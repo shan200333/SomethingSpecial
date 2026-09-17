@@ -1684,7 +1684,7 @@
         cupcakes
       */
 
-      if (input === "cupcake") {
+      if (input === "cupcakes") {
 
         document
           .getElementById("secretReveal")
@@ -1713,88 +1713,76 @@
     }
 
 
-    /* ============================
-       GIFT REQUEST FORM
-    ============================ */
+/* ============================
+   GIFT REQUEST FORM
+============================ */
 
-    const giftForm = document.getElementById("giftForm");
-    const formStatus = document.getElementById("formStatus");
+  const giftForm = document.getElementById("giftForm");
+  const formStatus = document.getElementById("formStatus");
 
-    giftForm.addEventListener("submit", async function(e) {
+  giftForm.addEventListener("submit", async function(e) {
 
-      e.preventDefault();
+    e.preventDefault();
 
-      const request =
-        document.getElementById("giftRequest").value.trim();
+    const request =
+      document.getElementById("giftRequest").value.trim();
 
-      if (!request) return;
+    if (!request) return;
 
-      /*
-        ===================================================
-        IMPORTANT
+    const FORM_ENDPOINT =
+      "https://formspree.io/f/mgavenbn";
 
-        Replace this URL with your Formspree endpoint.
+    formStatus.textContent = "Sending...";
 
-        Example:
-        https://formspree.io/f/xxxxxxxx
+    try {
 
-        ===================================================
-      */
+      const response = await fetch(
+        FORM_ENDPOINT,
+        {
+          method: "POST",
 
-      const FORM_ENDPOINT = "YOUR_FORM_ENDPOINT";
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
 
-      if (FORM_ENDPOINT === "YOUR_FORM_ENDPOINT") {
+          body: JSON.stringify({
+            message: request,
+            from: "Aeka",
+            name: "Aeka",
+            subject: "Aeka's Birthday Gift Request ♡"
+          })
+        }
+      );
 
-        formStatus.innerHTML =
+      if (response.ok) {
+
+        formStatus.textContent =
           "Deal. You have officially made this my problem now. ♡";
 
         giftForm.reset();
 
-        return;
-      }
+      } else {
 
-      formStatus.textContent = "Sending...";
+        const data = await response.json().catch(() => null);
 
-      try {
-
-        const response = await fetch(
-          FORM_ENDPOINT,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Accept": "application/json"
-            },
-            body: JSON.stringify({
-              message: request,
-              from: "Aeka",
-              subject: "Aeka's Birthday Gift Request ♡"
-            })
-          }
-        );
-
-        if (response.ok) {
-
-          formStatus.textContent =
-            "Deal. You have officially made this my problem now. ♡";
-
-          giftForm.reset();
-
-        } else {
-
-          formStatus.textContent =
-            "Something went wrong. Try again.";
-
-        }
-
-      } catch (error) {
+        console.error("Formspree error:", data);
 
         formStatus.textContent =
-          "Couldn't send it right now. Try again.";
+          "Something went wrong. Try again.";
 
       }
 
-    });
+    } catch (error) {
+
+      console.error("Submission error:", error);
+
+      formStatus.textContent =
+        "Couldn't send it right now. Try again.";
+
+    }
+
+  });
 
 
     /* ============================
