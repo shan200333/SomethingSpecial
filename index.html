@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0c1b13" />
+
+  <title>For Aeka ♡</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Homemade+Apple&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #07130d;
+      --bg2: #0d2117;
+      --green: #a8d17a;
+      --green-dark: #315a3d;
+      --cream: #f4eee0;
+      --muted: #aeb9ac;
+      --line: rgba(174, 209, 151, .22);
+      --card: rgba(18, 39, 27, .7);
+      --serif: "Cormorant Garamond", serif;
+      --sans: "DM Sans", sans-serif;
+      --script: "Homemade Apple", cursive;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      opacity: .045;
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    /* NAV */
+
+    nav {
+      position: absolute;
+      z-index: 20;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+    }
+
+    .logo {
+      font-family: var(--serif);
+      font-size: 22px;
+      letter-spacing: .04em;
+    }
+
+    .logo span {
+      color: var(--green);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      color: #c5cfc3;
+      font-size: 12px;
+    }
+
+    .nav-links a {
+      transition: color .25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(4, 13, 8, .95) 0%, rgba(5, 18, 11, .75) 48%, rgba(5, 16, 10, .3) 100%),
+        linear-gradient(0deg, #07130d 0%, transparent 30%),
+        url("assets/hero.jpg") center/cover;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 72% 38%, rgba(157, 205, 111, .12), transparent 30%),
+        radial-gradient(circle at 20% 75%, rgba(68, 115, 72, .12), transparent 30%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(650px, 90%);
+      margin-left: 7%;
+      padding-top: 60px;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: .25em;
+      font-size: 10px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(60px, 9vw, 115px);
+      font-weight: 500;
+      line-height: .82;
+    }
+
+    .hero h1 em {
+      display: block;
+      color: var(--green);
+      font-family: var(--script);
+      font-size: .72em;
+      font-style: normal;
+      margin-left: 35px;
+      margin-top: 12px;
+    }
+
+    .hero-description {
+      max-width: 480px;
+      margin-top: 38px;
+      color: #cbd2c8;
+      font-family: var(--serif);
+      font-size: 22px;
+      line-height: 1.35;
+    }
+
+    .primary-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 32px;
+      padding: 14px 23px;
+      border-radius: 40px;
+      border: 1px solid rgba(205, 235, 177, .5);
+      background: rgba(155, 201, 112, .9);
+      color: #102116;
+      font-weight: 600;
+      font-size: 13px;
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(133, 189, 99, .2);
+    }
+
+    .hand-note {
+      font-family: var(--script);
+      color: #b7c8ad;
+      font-size: 13px;
+      transform: rotate(-5deg);
+      margin-top: 22px;
+      margin-left: 20px;
+    }
+
+    .hero-polaroid {
+      position: absolute;
+      right: 11%;
+      top: 17%;
+      width: min(360px, 35vw);
+      background: #e9e0cc;
+      padding: 14px 14px 55px;
+      transform: rotate(5deg);
+      box-shadow: 0 35px 80px rgba(0,0,0,.45);
+      z-index: 3;
+    }
+
+    .hero-polaroid img {
+      width: 100%;
+      aspect-ratio: .82;
+      object-fit: cover;
+      display: block;
+      filter: saturate(.8);
+    }
+
+    .polaroid-caption {
+      position: absolute;
+      bottom: 14px;
+      left: 20px;
+      color: #30362d;
+      font-family: var(--script);
+      font-size: 12px;
+    }
+
+    .floating-note {
+      position: absolute;
+      right: 5%;
+      top: 47%;
+      font-family: var(--script);
+      color: #c6d2bc;
+      font-size: 13px;
+      max-width: 130px;
+      transform: rotate(7deg);
+      z-index: 4;
+    }
+
+    /* MUSIC */
+
+    .music {
+      position: absolute;
+      z-index: 10;
+      top: 10px;
+      right: 25px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 9px 13px;
+      background: rgba(5, 15, 9, .7);
+      backdrop-filter: blur(10px);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-size: 10px;
+      color: #bfc9bd;
+    }
+
+    .music button {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 0;
+      background: var(--green);
+      color: #122218;
+    }
+
+    /* SECTIONS */
+
+    section {
+      position: relative;
+      padding: 100px 0;
+      background: var(--bg);
+    }
+
+    section:nth-of-type(even) {
+      background: #091910;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .section-heading h2 {
+      font-family: var(--serif);
+      font-size: clamp(42px, 6vw, 70px);
+      font-weight: 500;
+      line-height: .9;
+    }
+
+    .section-heading p {
+      max-width: 300px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* STORY */
+
+    .timeline {
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      background: var(--line);
+    }
+
+    .timeline-item {
+      width: 50%;
+      padding: 0 50px 60px;
+      position: relative;
+    }
+
+    .timeline-item:nth-child(even) {
+      margin-left: 50%;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      border: 2px solid var(--green);
+      background: var(--bg);
+      top: 4px;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot {
+      right: -6px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+      left: -6px;
+    }
+
+    .timeline-date {
+      color: var(--green);
+      font-size: 11px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .timeline-item h3 {
+      font-family: var(--serif);
+      font-size: 31px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      max-width: 380px;
+    }
+
+    /* LITTLE THINGS */
+
+    .things-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .thing {
+      min-height: 220px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 28px;
+      background: linear-gradient(145deg, rgba(30, 59, 39, .7), rgba(7, 19, 13, .6));
+      transition: transform .35s, border-color .35s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .thing:hover {
+      transform: translateY(-7px);
+      border-color: rgba(168,209,122,.55);
+    }
+
+    .thing-icon {
+      font-size: 25px;
+    }
+
+    .thing h3 {
+      font-family: var(--serif);
+      font-size: 23px;
+      font-weight: 500;
+      margin-top: 20px;
+    }
+
+    .thing p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+      margin-top: 8px;
+    }
+
+    /* IF I WERE THERE */
+
+    .date-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .date-card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      min-height: 210px;
+      padding: 25px 18px;
+      text-align: center;
+      background: rgba(16, 36, 24, .65);
+      transition: .3s;
+    }
+
+    .date-card:hover,
+    .date-card.active {
+      background: rgba(55, 91, 53, .4);
+      transform: translateY(-5px);
+      border-color: rgba(168,209,122,.5);
+    }
+
+    .date-card .icon {
+      font-size: 25px;
+      margin-bottom: 20px;
+    }
+
+    .date-card h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .date-card p {
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    .date-response {
+      min-height: 45px;
+      text-align: center;
+      color: var(--green);
+      font-family: var(--serif);
+      font-size: 20px;
+      margin-top: 30px;
+      opacity: 0;
+      transition: opacity .4s;
+    }
+
+    .date-response.show {
+      opacity: 1;
+    }
+
+    /* GALLERY */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+      align-items: center;
+    }
+
+    .photo {
+      background: #e8dfcd;
+      padding: 10px 10px 38px;
+      box-shadow: 0 20px 40px rgba(0,0,0,.3);
+      transition: transform .35s;
+    }
+
+    .photo:hover {
+      transform: translateY(-8px) rotate(0deg) !important;
+    }
+
+    .photo img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+      filter: saturate(.85);
+    }
+
+    .photo span {
+      color: #35372f;
+      font-family: var(--script);
+      font-size: 9px;
+      display: block;
+      padding-top: 10px;
+    }
+
+    .photo:nth-child(1) {
+      grid-column: span 3;
+      transform: rotate(-5deg);
+    }
+
+    .photo:nth-child(2) {
+      grid-column: span 3;
+      transform: rotate(4deg);
+    }
+
+    .photo:nth-child(3) {
+      grid-column: span 3;
+      transform: rotate(-2deg);
+    }
+
+    .photo:nth-child(4) {
+      grid-column: span 3;
+      transform: rotate(5deg);
+    }
+
+    .photo:nth-child(5) {
+      grid-column: 3 / span 3;
+      transform: rotate(-4deg);
+      margin-top: 25px;
+    }
+
+    .photo:nth-child(6) {
+      grid-column: 7 / span 3;
+      transform: rotate(3deg);
+      margin-top: 25px;
+    }
+
+    /* GIFT */
+
+    .gift-section {
+      background:
+        radial-gradient(circle at 20% 30%, rgba(125, 171, 95, .1), transparent 30%),
+        #07130d;
+    }
+
+    .gift-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .gift-copy,
+    .gift-form {
+      padding: 60px;
+    }
+
+    .gift-copy {
+      border-right: 1px solid var(--line);
+    }
+
+    .gift-copy h2,
+    .gift-form h2 {
+      font-family: var(--serif);
+      font-size: 45px;
+      font-weight: 500;
+      line-height: .95;
+    }
+
+    .gift-copy p,
+    .gift-form p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      margin-top: 22px;
+      max-width: 430px;
+    }
+
+    .gift-box {
+      font-size: 60px;
+      margin-bottom: 25px;
+    }
+
+    .gift-form textarea {
+      margin-top: 25px;
+      width: 100%;
+      min-height: 140px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 17px;
+      color: var(--cream);
+      background: rgba(2, 10, 5, .45);
+      outline: none;
+    }
+
+    .gift-form textarea:focus {
+      border-color: var(--green);
+    }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 10px;
+      border: 0;
+      border-radius: 30px;
+      padding: 14px;
+      background: var(--green);
+      color: #112016;
+      font-weight: 600;
+    }
+
+    .form-status {
+      text-align: center;
+      color: var(--green);
+      margin-top: 15px;
+      font-size: 13px;
+      min-height: 20px;
+    }
+
+    /* SECRET */
+
+    .secret-box {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      background: rgba(16, 35, 23, .6);
+    }
+
+    .secret-left {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .lock {
+      width: 55px;
+      height: 55px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+    }
+
+    .secret-box h3 {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 500;
+    }
+
+    .secret-box p {
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 5px;
+    }
+
+    .secret-input {
+      display: flex;
+      gap: 8px;
+    }
+
+    .secret-input input {
+      width: 180px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: rgba(0,0,0,.2);
+      color: white;
+      outline: none;
+    }
+
+    .secret-input button {
+      border: 0;
+      border-radius: 8px;
+      padding: 0 18px;
+      background: var(--cream);
+      color: #162017;
+    }
+
+    .secret-reveal {
+      display: none;
+      margin-top: 25px;
+      text-align: center;
+      animation: reveal .8s ease;
+    }
+
+    .secret-reveal.show {
+      display: block;
+    }
+
+    .secret-reveal img {
+      width: min(400px, 100%);
+      max-height: 450px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .secret-reveal p {
+      font-family: var(--serif);
+      color: var(--cream);
+      font-size: 24px;
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* LETTER */
+
+    .letter-section {
+      background: var(--cream) !important;
+      color: #1d281f;
+    }
+
+    .letter {
+      max-width: 950px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .letter-label {
+      font-family: var(--serif);
+      font-size: 48px;
+      line-height: .9;
+    }
+
+    .letter-label small {
+      display: block;
+      font-family: var(--sans);
+      font-size: 11px;
+      color: #687267;
+      margin-top: 20px;
+    }
+
+    .letter-content {
+      border-left: 1px solid rgba(31, 51, 36, .2);
+      padding-left: 55px;
+      font-family: var(--serif);
+      font-size: 21px;
+      line-height: 1.65;
+      color: #354037;
+    }
+
+    .letter-content .dear {
+      font-family: var(--script);
+      font-size: 18px;
+      margin-bottom: 25px;
+      color: #283629;
+    }
+
+    /* END */
+
+    .ending {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      background:
+        linear-gradient(0deg, rgba(4,12,8,.9), rgba(4,12,8,.15)),
+        url("assets/hero.jpg") center/cover;
+    }
+
+    .ending-inner {
+      width: 700px;
+      max-width: 90%;
+      margin: auto;
+    }
+
+    .ending h2 {
+      font-family: var(--serif);
+      font-size: clamp(48px, 7vw, 82px);
+      font-weight: 500;
+    }
+
+    .ending h2 span {
+      color: var(--green);
+    }
+
+    .ending p {
+      color: #c5cec3;
+      margin-top: 25px;
+      font-family: var(--serif);
+      font-size: 21px;
+      line-height: 1.5;
+    }
+
+    .signature {
+      font-family: var(--script);
+      color: var(--green);
+      margin-top: 45px;
+      font-size: 19px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #040c07;
+      color: #667168;
+      font-size: 9px;
+      letter-spacing: .1em;
+    }
+
+    /* REVEAL ANIMATION */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width: 800px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      nav {
+        height: 65px;
+      }
+
+      .music {
+        top: 65px;
+        right: 15px;
+      }
+
+      .hero {
+        min-height: 100svh;
+        align-items: end;
+        padding-bottom: 70px;
+      }
+
+      .hero-content {
+        margin-left: 20px;
+        margin-right: 20px;
+        width: auto;
+      }
+
+      .hero h1 {
+        font-size: 64px;
+      }
+
+      .hero h1 em {
+        margin-left: 10px;
+      }
+
+      .hero-description {
+        font-size: 18px;
+        max-width: 340px;
+      }
+
+      .hero-polaroid {
+        width: 190px;
+        right: 8%;
+        top: 16%;
+        padding: 8px 8px 30px;
+      }
+
+      .polaroid-caption {
+        font-size: 7px;
+        bottom: 8px;
+        left: 12px;
+      }
+
+      .floating-note {
+        display: none;
+      }
+
+      section {
+        padding: 75px 0;
+      }
+
+      .container {
+        width: min(100% - 30px, 600px);
+      }
+
+      .section-heading {
+        display: block;
+        margin-bottom: 40px;
+      }
+
+      .section-heading p {
+        margin-top: 18px;
+      }
+
+      .timeline::before {
+        left: 8px;
+      }
+
+      .timeline-item,
+      .timeline-item:nth-child(even) {
+        width: 100%;
+        margin-left: 0;
+        padding: 0 0 45px 35px;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-dot,
+      .timeline-item:nth-child(even) .timeline-dot {
+        left: 2px;
+        right: auto;
+      }
+
+      .things-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .thing {
+        min-height: 190px;
+        padding: 20px;
+      }
+
+      .date-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .date-card:last-child {
+        grid-column: span 2;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .photo,
+      .photo:nth-child(n) {
+        grid-column: auto;
+        margin-top: 0;
+      }
+
+      .photo:nth-child(2n) {
+        transform: rotate(3deg);
+      }
+
+      .photo:nth-child(2n+1) {
+        transform: rotate(-3deg);
+      }
+
+      .gift-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gift-copy {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .gift-copy,
+      .gift-form {
+        padding: 35px 25px;
+      }
+
+      .gift-copy h2,
+      .gift-form h2 {
+        font-size: 39px;
+      }
+
+      .secret-box {
+        display: block;
+      }
+
+      .secret-left {
+        margin-bottom: 25px;
+      }
+
+      .secret-input {
+        width: 100%;
+      }
+
+      .secret-input input {
+        flex: 1;
+        width: auto;
+      }
+
+      .letter {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .letter-content {
+        border-left: 0;
+        border-top: 1px solid rgba(31,51,36,.2);
+        padding-left: 0;
+        padding-top: 35px;
+      }
+    }
+
+    @media(max-width: 480px) {
+      .hero-polaroid {
+        width: 155px;
+        right: 4%;
+        top: 15%;
+      }
+
+      .things-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .date-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .date-card:last-child {
+        grid-column: auto;
+      }
+
+      .secret-left {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="#home" class="logo">For Aeka <span>♡</span></a>
+
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#story">Our Story</a>
+      <a href="#things">Little Things</a>
+      <a href="#memories">Memories</a>
+      <a href="#letter">A Letter</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="home">
+
+    <div class="music">
+      <button id="musicBtn">▶</button>
+      <span>autistic korean music<br><small>a song for you</small></span>
+    </div>
+
+    <div class="hero-content reveal">
+      <div class="eyebrow">For my Chotu</div>
+
+      <h1>
+        Happy Birthday,
+        <em>Aeka ♡</em>
+      </h1>
+
+      <p class="hero-description">
+        I couldn't be there with you today,
+        so I made you a little place on the internet instead.
+      </p>
+
+      <a href="#story" class="primary-btn">
+        Open your surprise →
+      </a>
+
+      <div class="hand-note">
+        Same sky.<br>
+        Different places.<br>
+        Still you & me ♡
+      </div>
+    </div>
+
+    <div class="hero-polaroid">
+      <img src="assets/hero.jpg" alt="Aeka">
+      <div class="polaroid-caption">my favourite view ♡</div>
+    </div>
+
+    <div class="floating-note">
+      Another year of you.
+      And I'm grateful for it all. ♡
+    </div>
+
+  </header>
+
+  <!-- STORY -->
+  <section id="story">
+
+    <div class="container">
+
+      <div class="section-heading reveal">
+        <h2>Our Story</h2>
+        <p>
+          Different places, same us.
+          Not just a timeline, but a collection of moments
+          that mean something to me.
+        </p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Before everything</div>
+          <h3>Through our parents</h3>
+          <p>
+            Somehow the best things happen in the most unexpected
+            (and traditional) ways.
+          </p>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">21st November</div>
+          <h3>The day we met</h3>
+          <p>
+            First time we met. The day everything started to feel
+            a little different.
+          </p>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">14th April</div>
+          <h3>Our first date</h3>
+          <p>
+            Still one of my favourite days.
+            Same date, more reasons to smile.
+          </p>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">One of my favourites</div>
+          <h3>Sunder Nursery</h3>
+          <p>
+            Pretty place, better company.
+            The views were beautiful, but you made the memory.
+          </p>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Still writing</div>
+          <h3>Many more to come</h3>
+          <p>
+            So many more dates, memories and places
+            to look forward to.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- LITTLE THINGS -->
+  <section id="things">
+
+    <div class="container">
+
+      <div class="section-heading reveal">
+        <h2>Things you probably don't realize I notice.</h2>
+        <p>
+          The little things that make you, you.
+        </p>
+      </div>
+
+      <div class="things-grid">
+
+        <div class="thing reveal">
+          <div class="thing-icon">☺</div>
+          <div>
+            <h3>Your laugh</h3>
+            <p>
+              It can instantly change my mood.
+            </p>
+          </div>
+        </div>
+
+        <div class="thing reveal">
+          <div class="thing-icon">🧁</div>
+          <div>
+            <h3>Cupcakes</h3>
+            <p>
+              You say cupcakes, but I know it means kisses. ♡
+            </p>
+          </div>
+        </div>
+
+        <div class="thing reveal">
+          <div class="thing-icon">♥</div>
+          <div>
+            <h3>Everything</h3>
+            <p>
+              Truly. Everything about you.
+            </p>
+          </div>
+        </div>
+
+        <div class="thing reveal">
+          <div class="thing-icon">♫</div>
+          <div>
+            <h3>Your music taste</h3>
+            <p>
+              Even your autistic Korean music makes me love you more.
+            </p>
+          </div>
+        </div>
+
+        <div class="thing reveal">
+          <div class="thing-icon">▤</div>
+          <div>
+            <h3>The little updates</h3>
+            <p>
+              Those random texts, memes and messages
+              mean a lot.
+            </p>
+          </div>
+        </div>
+
+        <div class="thing reveal">
+          <div class="thing-icon">✦</div>
+          <div>
+            <h3>Just you</h3>
+            <p>
+              The way you are is enough.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- IF I WERE THERE -->
+  <section>
+
+    <div class="container">
+
+      <div class="section-heading reveal">
+        <h2>If I were there with you today...</h2>
+        <p>
+          Just a few of the things I wish we could do together.
+        </p>
+      </div>
+
+      <div class="date-grid">
+
+        <button class="date-card reveal" data-answer="Find a cute place, order way too much and blame each other for eating everything.">
+          <div class="icon">🍕</div>
+          <h3>Food</h3>
+          <p>
+            Find a cute place and eat way too much.
+          </p>
+        </button>
+
+        <button class="date-card reveal" data-answer="Put on a movie (or three), share snacks, and judge everything together.">
+          <div class="icon">🎬</div>
+          <h3>Movie</h3>
+          <p>
+            A movie, snacks and commentary from both of us.
+          </p>
+        </button>
+
+        <button class="date-card reveal" data-answer="No fixed plan. Just music, you, me and somewhere we haven't been before.">
+          <div class="icon">🚗</div>
+          <h3>Random drive</h3>
+          <p>
+            No fixed plan. Just music and you.
+          </p>
+        </button>
+
+        <button class="date-card reveal" data-answer="Talk about everything and nothing, like we always do. Except this time, you're actually sitting next to me.">
+          <div class="icon">🌙</div>
+          <h3>Late-night walk</h3>
+          <p>
+            Talk about everything and nothing.
+          </p>
+        </button>
+
+        <button class="date-card reveal" data-answer="Just exist in the same place and do absolutely nothing. Somehow that would still feel perfect.">
+          <div class="icon">🛋</div>
+          <h3>Do nothing</h3>
+          <p>
+            Just exist in the same place.
+          </p>
+        </button>
+
+      </div>
+
+      <div class="date-response" id="dateResponse"></div>
+
+    </div>
+  </section>
+
+  <!-- MEMORIES -->
+  <section id="memories">
+
+    <div class="container">
+
+      <div class="section-heading reveal">
+        <h2>Our Memories</h2>
+        <p>
+          A few moments, a lot of meaning.
+        </p>
+      </div>
+
+      <div class="gallery">
+
+        <div class="photo reveal">
+          <img src="assets/memory1.jpg" alt="Sunder Nursery">
+          <span>Thank you for your company that day ♡</span>
+        </div>
+
+        <div class="photo reveal">
+          <img src="assets/memory2.jpg" alt="Memory">
+          <span>You + me. Always a good idea.</span>
+        </div>
+
+        <div class="photo reveal">
+          <img src="assets/memory3.jpg" alt="Memory">
+          <span>Small moments. Big happiness.</span>
+        </div>
+
+        <div class="photo reveal">
+          <img src="assets/memory4.jpg" alt="Memory">
+          <span>Thank you for always taking me to the best of the places.</span>
+        </div>
+
+        <div class="photo reveal">
+          <img src="assets/memory5.jpg" alt="Memory">
+          <span>Loved to see the little kid sitting behind me, while I did what I love the most.</span>
+        </div>
+
+        <div class="photo reveal">
+          <img src="assets/hero.jpg" alt="Aeka">
+          <span>Ny favourite photo of yours ♡</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LATE GIFT + REQUEST -->
+  <section class="gift-section">
+
+    <div class="container">
+
+      <div class="gift-grid reveal">
+
+        <div class="gift-copy">
+
+          <div class="gift-box">♡</div>
+
+          <h2>
+            Okay, there's one problem...
+          </h2>
+
+          <p>
+            Your actual birthday gift decided to arrive
+            fashionably late.
+          </p>
+
+          <p>
+            Since you're in a remote location, I couldn't get it
+            to you in time. But don't worry — it's on its way,
+            and you'll get it soon.
+          </p>
+
+          <p>
+            So for today, I made you this instead. :)
+          </p>
+
+        </div>
+
+        <div class="gift-form">
+
+          <h2>
+            Your gift request
+          </h2>
+
+          <p>
+            Since your actual gift is late, you get to choose
+            something else.
+          </p>
+
+          <p>
+            Tell me what you want from me.
+            Anything reasonable. I'm not allowed to complain.
+          </p>
+
+          <!--
+            IMPORTANT:
+            Replace YOUR_FORM_ENDPOINT below with your
+            Formspree/Web3Forms endpoint.
+          -->
+
+          <form id="giftForm">
+
+            <textarea
+              id="giftRequest"
+              maxlength="500"
+              placeholder="What do you want from me?..."
+              required
+            ></textarea>
+
+            <button class="submit-btn" type="submit">
+              Claim it →
+            </button>
+
+            <div class="form-status" id="formStatus"></div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECRET -->
+  <section>
+
+    <div class="container">
+
+      <div class="secret-box reveal">
+
+        <div class="secret-left">
+
+          <div class="lock">♧</div>
+
+          <div>
+            <h3>There's still one more thing...</h3>
+            <p>
+              A little secret, just for you. ♡
+            </p>
+          </div>
+
+        </div>
+
+        <div class="secret-input">
+
+          <input
+            id="secretInput"
+            type="text"
+            placeholder="Enter the secret word..."
+          />
+
+          <button onclick="unlockSecret()">
+            Unlock →
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="secret-reveal" id="secretReveal">
+
+        <img src="assets/secret.jpg" alt="Our secret memory">
+
+        <p>
+          You already know what "cupcakes" means. 🧁
+          <br>
+          So here's one for you. ♡
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- LETTER -->
+  <section class="letter-section" id="letter">
+
+    <div class="container">
+
+      <div class="letter">
+
+        <div class="letter-label">
+          A Letter<br>
+          for You
+
+          <small>
+            From me, to my chotu.
+          </small>
+        </div>
+
+        <div class="letter-content">
+
+          <div class="dear">
+            Dear Aeka,
+          </div>
+
+          <!--
+            REPLACE THIS WITH YOUR REAL LETTER.
+            I strongly recommend writing this yourself.
+          -->
+
+          <p>
+            Happy birthday, Chotu.
+          </p>
+
+          <br>
+
+          <p>
+            I wish I could have been there with you today.
+            I wish I could actually see your face, annoy you,
+            make you laugh and spend the whole day with you.
+          </p>
+
+          <br>
+
+          <p>
+            Since I couldn't do that this time, I wanted to at
+            least make you something that you could keep.
+            Something that reminds you that even when we're
+            in completely different places, you're still a
+            very important part of my day.
+          </p>
+
+          <br>
+
+          <p>
+            We've already made some really good memories,
+            from the day we met on 21st November to Sunder
+            Nursery and all the random little moments in between.
+            And I hope there are a lot more of them waiting for us.
+          </p>
+
+          <br>
+
+          <p>
+            Happy birthday, my Chotu.
+            I hope this year gives you everything you deserve.
+          </p>
+
+          <br>
+
+          <p>
+            And yes, the actual gift is coming.
+            You just have to be a little patient with me. ♡
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ENDING -->
+  <section class="ending">
+
+    <div class="ending-inner reveal">
+
+      <h2>
+        Happy Birthday,
+        <span>Aeka ♡</span>
+      </h2>
+
+      <p>
+        Here's to you, to us, and to all the birthdays
+        we'll eventually get to celebrate together.
+      </p>
+
+      <p>
+        Until then, I'm always with you —
+        in every call, every message,
+        and every little moment.
+      </p>
+
+      <div class="signature">
+        Always yours ♡
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+    MADE WITH LOVE, A LITTLE DISTANCE & WAY TOO MANY MEMORIES ♡
+  </footer>
+
+
+  <!-- AUDIO -->
+  <audio id="bgMusic" loop>
+    <!--
+      Optional:
+      Put your audio file in assets/song.mp3
+      and uncomment this line.
+    -->
+    <!-- <source src="assets/song.mp3" type="audio/mpeg"> -->
+  </audio>
+
+
+  <script>
+
+    /* ============================
+       SCROLL REVEAL
+    ============================ */
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+    document.querySelectorAll(".reveal").forEach(el => {
+      observer.observe(el);
+    });
+
+
+    /* ============================
+       DATE CARDS
+    ============================ */
+
+    const dateCards = document.querySelectorAll(".date-card");
+    const dateResponse = document.getElementById("dateResponse");
+
+    dateCards.forEach(card => {
+
+      card.addEventListener("click", () => {
+
+        dateCards.forEach(c => c.classList.remove("active"));
+        card.classList.add("active");
+
+        dateResponse.textContent = card.dataset.answer;
+        dateResponse.classList.add("show");
+
+      });
+
+    });
+
+
+    /* ============================
+       SECRET EASTER EGG
+    ============================ */
+
+    function unlockSecret() {
+
+      const input = document
+        .getElementById("secretInput")
+        .value
+        .trim()
+        .toLowerCase();
+
+      /*
+        Change this to whatever secret you want.
+
+        Current secret:
+        cupcakes
+      */
+
+      if (input === "cupcake") {
+
+        document
+          .getElementById("secretReveal")
+          .classList.add("show");
+
+        document
+          .getElementById("secretReveal")
+          .scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
+
+      } else {
+
+        const inputBox = document.getElementById("secretInput");
+
+        inputBox.value = "";
+        inputBox.placeholder = "Hmm... try again ♡";
+
+        setTimeout(() => {
+          inputBox.placeholder = "Enter the secret word...";
+        }, 2000);
+
+      }
+
+    }
+
+
+    /* ============================
+       GIFT REQUEST FORM
+    ============================ */
+
+    const giftForm = document.getElementById("giftForm");
+    const formStatus = document.getElementById("formStatus");
+
+    giftForm.addEventListener("submit", async function(e) {
+
+      e.preventDefault();
+
+      const request =
+        document.getElementById("giftRequest").value.trim();
+
+      if (!request) return;
+
+      /*
+        ===================================================
+        IMPORTANT
+
+        Replace this URL with your Formspree endpoint.
+
+        Example:
+        https://formspree.io/f/xxxxxxxx
+
+        ===================================================
+      */
+
+      const FORM_ENDPOINT = "YOUR_FORM_ENDPOINT";
+
+      if (FORM_ENDPOINT === "YOUR_FORM_ENDPOINT") {
+
+        formStatus.innerHTML =
+          "Deal. You have officially made this my problem now. ♡";
+
+        giftForm.reset();
+
+        return;
+      }
+
+      formStatus.textContent = "Sending...";
+
+      try {
+
+        const response = await fetch(
+          FORM_ENDPOINT,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: JSON.stringify({
+              message: request,
+              from: "Aeka",
+              subject: "Aeka's Birthday Gift Request ♡"
+            })
+          }
+        );
+
+        if (response.ok) {
+
+          formStatus.textContent =
+            "Deal. You have officially made this my problem now. ♡";
+
+          giftForm.reset();
+
+        } else {
+
+          formStatus.textContent =
+            "Something went wrong. Try again.";
+
+        }
+
+      } catch (error) {
+
+        formStatus.textContent =
+          "Couldn't send it right now. Try again.";
+
+      }
+
+    });
+
+
+    /* ============================
+       MUSIC
+    ============================ */
+
+    const musicBtn = document.getElementById("musicBtn");
+    const bgMusic = document.getElementById("bgMusic");
+
+    let playing = false;
+
+    musicBtn.addEventListener("click", async () => {
+
+      if (!bgMusic.querySelector("source")) {
+        musicBtn.textContent = "♪";
+        return;
+      }
+
+      if (!playing) {
+
+        await bgMusic.play();
+
+        musicBtn.textContent = "Ⅱ";
+        playing = true;
+
+      } else {
+
+        bgMusic.pause();
+
+        musicBtn.textContent = "▶";
+        playing = false;
+
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
